@@ -1,0 +1,17 @@
+{
+    "python.REPL.enableREPLSmartSend": false,
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "ostream": "cpp",
+        "limits": "cpp",
+        "*.tcc": "cpp"
+    }
+}
