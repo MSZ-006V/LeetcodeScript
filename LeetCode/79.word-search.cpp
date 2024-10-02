@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=79 lang=cpp
+ * @lc app=leetcode id=79 lang=cpp
  *
- * [79] 单词搜索
+ * [79] Word Search
  */
 
 // @lc code=start
@@ -32,7 +32,6 @@ public:
         }
         return result;
     }
-
     bool exist(vector<vector<char>>& board, string word) {
         char start = word[0];
         n = board.size();

@@ -6,6 +6,7 @@
 
 // @lc code=start
 // 使用一个双向链表和一个unordered_map实现LRU缓存的方法
+// 因为需要把最近使用的节点移到最前面，所以需要一个双向链表
 struct DlinkedNode{
     int key, value;
     DlinkedNode* prev;
@@ -19,7 +20,7 @@ private:
     unordered_map<int, DlinkedNode*> cache; // 模拟哈希表，通过int值直接查询到节点的位置
     int size;
     int capacity;
-    DlinkedNode* head; // 双线链表的头结点和尾节点
+    DlinkedNode* head; // 双向链表的头结点和尾节点
     DlinkedNode* tail; // 这个链表就代表了最近最少使用和最多使用
     // 链表，从头到尾，分别表示每个节点最近使用的顺序，链表头部的节点是最近使用的
     // 链表尾部的节点表示最近最少使用的，所以移到了最后面
@@ -52,7 +53,7 @@ public:
             addTohead(node);
             ++size;
             if (size > capacity) {
-                // 如果超出容量，删除双向链表的尾部节点，即LRU规则，移除最近最少是用的节点
+                // 如果超出容量，删除双向链表的尾部节点，即LRU规则，移除最近最少使用的节点
                 DlinkedNode* removed = removeTail();
                 // 删除哈希表中对应的项
                 cache.erase(removed->key);
@@ -82,11 +83,11 @@ public:
     }
 
     void moveTohead(DlinkedNode* node){
-        removeNode(node);
-        addTohead(node);
+        removeNode(node); // 先把原来的地方删除
+        addTohead(node); // 然后再把新的插入头节点head的后面
     }
 
-    DlinkedNode* removeTail(){
+    DlinkedNode* removeTail(){ // 即删除tail尾节点的上一个节点
         DlinkedNode* node = tail->prev;
         removeNode(node);
         return node;
