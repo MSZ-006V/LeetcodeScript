@@ -5,6 +5,9 @@
         "concepts": "cpp",
         "string_view": "cpp",
         "span": "cpp",
-        "text_encoding": "cpp"
+        "text_encoding": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "tuple": "cpp"
     }
 }
