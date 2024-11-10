@@ -23,7 +23,7 @@ class Solution(object):
         # dp[i][0]代表在第i天持有股票的最大收益
         # dp[i][1]代表在第i天不持有股票的最大收益
         dp = [[0, 0] for _ in range(len(prices))]
-        dp[0][0] = -prices[0]
+        dp[0][0] = -prices[0] # 持有股票就是买了
         dp[0][1] = 0
 
         # print(dp)
