@@ -74,7 +74,7 @@ class Solution(object):
             pre = slow
             slow = slow.next
             fast = fast.next.next
-        pre.next = None
+        pre.next = None # slow是后续链表的开头，而pre是第一个链表的结尾，所以要设置pre.next = None
 
         cur1 = head
         cur2 = self.reverList(slow)

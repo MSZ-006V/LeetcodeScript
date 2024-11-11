@@ -21,7 +21,7 @@ public:
         while(que.size() != 0){
             int cur = que.front();que.pop();
             result.insert(result.begin(), cur);
-            vector<int> cur_edge = edges[cur];
+            vector<int>& cur_edge = edges[cur]; // 这样子写减少内存占用
 
             for(int i = 0; i < cur_edge.size(); ++i){
                 input_rank[cur_edge[i]]--;
@@ -30,13 +30,10 @@ public:
                 }
             }
         }
-        if(result.size() != n){
+        if(result.size() != n){ // 表示无法得到拓扑排序，因为图内有环
             return {};
         }
         return result;
-        // for(int i = 0; i < result.size(); ++i){
-        //     cout << result[i] << ' ';
-        // }
 
     }
 

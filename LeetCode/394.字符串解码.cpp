@@ -13,8 +13,8 @@ public:
         // 先解决内层，然后解决外层，简单题
         string result = "";
         string temp_num = ""; // 暂时存储数字
-        stack<char> st;
-        stack<int> nums;
+        stack<char> st; // 储存[, ]还有字母
+        stack<int> nums; // 储存重复次数
         for(char c:s){
             if(c == ']'){
                 string temp_s = ""; // 存储要重复的字符串

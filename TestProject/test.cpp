@@ -20,7 +20,10 @@ int main(){
     // for(auto p : f){
     //     cout << p.first << ' ' << p.second << endl;
     // }
-    string s = "adawbdvc";
-    string sst = s.substr(0, 1);
-    cout << sst;
+    vector<int> nums = {5,2,85,36,52,74,325};
+    auto it = find(nums.begin(), nums.end(), 325);
+    nums.erase(it);
+    for(auto num : nums){
+        cout << num << ' ';
+    }
 }
