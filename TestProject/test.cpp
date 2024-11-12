@@ -3,6 +3,7 @@
 #include<string>
 #include<ranges>
 #include<algorithm>
+#include<numeric>
 #include<unordered_map>
 
 using namespace std;
@@ -20,10 +21,10 @@ int main(){
     // for(auto p : f){
     //     cout << p.first << ' ' << p.second << endl;
     // }
-    vector<int> nums = {5,2,85,36,52,74,325};
-    auto it = find(nums.begin(), nums.end(), 325);
-    nums.erase(it);
-    for(auto num : nums){
-        cout << num << ' ';
-    }
+    vector<string> words = {"hello", "how", "are", "you"};
+    string s = words[0];
+    s = accumulate(words.begin() + 1, words.end(), s, [](auto a, auto b){
+        return a + " " + b;
+    });
+    cout << s;
 }

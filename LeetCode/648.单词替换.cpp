@@ -38,7 +38,6 @@ public:
         }
         // cout << word.substr(0, index) << endl;
         return index;
-
     }
 
 };
