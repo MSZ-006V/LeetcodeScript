@@ -27,4 +27,13 @@ int main(){
         return a + " " + b;
     });
     cout << s;
+
+    map<int, int> tt;
+    for(auto interval : intervals){
+        tt[intervals[0]]++;
+        tt[intervals[1]]--;
+    }
+    for(auto t : tt){
+        cout << t.first << ' ' << t.second << endl;
+    }
 }
