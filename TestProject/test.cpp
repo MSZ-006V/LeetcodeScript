@@ -8,6 +8,20 @@
 
 using namespace std;
 
+int bs(vector<int>& nums, int target){
+    int left = 0, right = nums.size() - 1;
+    while(left <= right){
+        int mid = left + (right - left) / 2;
+        if(nums[mid] < target){
+            left = mid + 1;
+        }
+        else{
+            right = mid - 1;
+        }
+    }
+
+    return left;
+}
 
 
 int main(){
@@ -21,19 +35,21 @@ int main(){
     // for(auto p : f){
     //     cout << p.first << ' ' << p.second << endl;
     // }
-    vector<string> words = {"hello", "how", "are", "you"};
-    string s = words[0];
-    s = accumulate(words.begin() + 1, words.end(), s, [](auto a, auto b){
-        return a + " " + b;
-    });
-    cout << s;
+    std::string sentence = "Hello my name is Jane";
+    std::vector<std::string> words;
+    size_t start = 0, end;
 
-    map<int, int> tt;
-    for(auto interval : intervals){
-        tt[intervals[0]]++;
-        tt[intervals[1]]--;
+    while ((end = sentence.find(' ', start)) != std::string::npos) {
+        words.push_back(sentence.substr(start, end - start));
+        start = end + 1; // 移动到下一个单词的起始位置
     }
-    for(auto t : tt){
-        cout << t.first << ' ' << t.second << endl;
+
+    // 最后一个单词
+    words.push_back(sentence.substr(start));
+
+    for (const auto& w : words) {
+        std::cout << w << std::endl;
     }
+    return 0;
+    
 }

@@ -14,20 +14,27 @@ public:
         if (matrix.size() == 0 || matrix[0].size() == 0) {
             return 0;
         }
-        rows = matrix.size();
-        columns = matrix[0].size();
-        auto memo = vector< vector<int> > (rows, vector <int> (columns));
+        rows = matrix.size(); // 行
+        columns = matrix[0].size(); // 列
+        // memo记录每一个点最长递增序列的值
+        auto memo = vector<vector<int>> (rows, vector <int> (columns));
         int ans = 0;
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < columns; ++j) {
                 ans = max(ans, dfs(matrix, i, j, memo));
             }
         }
-        return ans;
+        // for(auto e : memo){
+        //     for(auto n : e){
+        //         cout << n << ' ';
+        //     }
+        //     cout << endl;
+        // }
+        return ans; // 最后最大的值是在path的开头的
     }
 
     int dfs(vector< vector<int> > &matrix, int row, int column, vector< vector<int> > &memo) {
-        if (memo[row][column] != 0) {
+        if (memo[row][column] != 0) { // 防止重复查找的诀窍，如果访问到已经有记录的节点，就直接返回，就不用重复计算了
             return memo[row][column];
         }
         ++memo[row][column];
