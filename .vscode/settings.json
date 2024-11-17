@@ -19,6 +19,7 @@
         "*.tcc": "cpp",
         "functional": "cpp",
         "variant": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "random": "cpp"
     }
 }

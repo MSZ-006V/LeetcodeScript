@@ -27,13 +27,14 @@ class Solution(object):
                     # 同时也能保证左右两边不会重复计算
 
                     # 除此之外，下面这个步骤也能防止计算同样高度的
-                    # 比如2,1,1,3这样的，第三个元素1计算出来的是0，就自动跳过了
-                    # 最后还是只会计算2,1,3这个的面积
+                    # 比如2,1,1,3这样的，第三个元素1计算出来的面积是0，就自动跳过了
+                    # 然后接着计算2,1,3这种情况，计算出来是3，再加上，就没有重复计算
+                    # 所以要使用一个while循环
                     if len(stack) != 0:
                         h = min(height[stack[-1]], height[i]) - height[mid]
                         w = i - stack[-1] - 1
                         answer += h * w
-                        print(answer)
+                        # print(answer)
                 stack.append(i)
 
                 
