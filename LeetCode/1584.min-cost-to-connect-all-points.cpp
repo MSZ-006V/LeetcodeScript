@@ -5,22 +5,71 @@
  */
 
 // @lc code=start
+struct edge{
+    int l, r, val;
+};
+class unionfind{
+public:
+    vector<int> father;
+    unionfind(int n){
+        father = vector<int>(n, 0);
+        for(int i = 0; i < n; ++i){
+            father[i] = i;
+        }
+    }
+    bool isSame(int u, int v){
+        u = find(u);
+        v = find(v);
+        return u == v;
+    }
+    int find(int u){
+        if(u == father[u]) return u;
+        else return father[u] = find(father[u]);
+    }
+    void join(int u, int v){
+        u = find(u);
+        v = find(v);
+        if(u == v) return;
+        father[v] = u;
+    }
+};
 class Solution {
 public:
-    int minCostConnectPoints(vector<vector<int>>& points) {
-        auto manhattan_dis = [&](auto a, auto b){
-            return abs(a[0] - b[0]) + abs(a[1] + b[1]);
-        };
-        int n = points.size();
-        vector<vector<int>> edge(n, vector<int>(n, 0));
-        for(int i = 0; i < n; ++i){
-            for(int j = i + 1; j < n; ++j){
-                edge[i][j] = manhattan_dis(points[i], points[j]);
-                edge[j][i] = edge[i][j];
+    int kruskal(unionfind& uf, vector<edge>& edges, int edge_num, int vertex_num){
+        int n = vertex_num - 1;
+        int cost = 0;
+        vector<edge> tree;
+        for(int i = 0; i < edge_num; ++i){
+            if(!uf.isSame(edges[i].l, edges[i].r)){
+                uf.join(edges[i].l, edges[i].r);
+                cost += edges[i].val;
+                tree.push_back(edges[i]);
+                n -= 1;
+                if(n == 0) break;
             }
         }
+        return cost;
+    }
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        // 计算manhattan距离
+        auto manhattan_dis = [&](auto a, auto b){
+            return abs(a[0] - b[0]) + abs(a[1] - b[1]);
+        };
+        int n = points.size();
+        unionfind uf(n);
+        vector<edge> edges; // 使用自定义edge数据结构建立数组
+        for(int i = 0; i < n; ++i){
+            for(int j = i + 1; j < n; ++j){
+                edges.push_back({i, j, manhattan_dis(points[i], points[j])});
+            }
+        }
+        sort(edges.begin(), edges.end(), [](auto& a, auto& b){
+            return a.val < b.val;
+        }); // 排序
+        
+        int cost = kruskal(uf, edges, edges.size(), n);
 
-        return 0;
+        return cost;
     }
 };
 // @lc code=end

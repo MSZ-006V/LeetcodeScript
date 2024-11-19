@@ -36,7 +36,9 @@ public:
                     int step = 0;
                     
                     while(que.size() != 0){
-                        int sz = que.size();
+                        // 这里是关键，一环一环的进行访问，每次都访问固定数量的节点
+                        // 访问完一圈然后继续访问
+                        int sz = que.size(); 
                         for(int k = 0; k < sz; ++k){
                             auto [x, y] = que.front();que.pop();
                             for(int index = 0; index < 4; ++index){
