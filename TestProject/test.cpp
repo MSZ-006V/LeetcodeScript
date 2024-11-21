@@ -5,6 +5,7 @@
 #include<algorithm>
 #include<numeric>
 #include<sstream>
+#include<memory>
 #include<unordered_map>
 
 using namespace std;
@@ -51,17 +52,10 @@ int main(){
     // for (const auto& w : words) {
     //     std::cout << w << std::endl;
     // }
-    string s = "Hello world how are you doing today";
-    std::istringstream iss(s);
-    string temp;
-    vector<string> sv;
-    while(getline(iss, temp, ' ')){
-        sv.push_back(temp);
-    }
+    vector<int> nums = {42};
+    vector<int> num1 = std::move(nums);
+    cout << nums.size() << ' ' << num1.size();
 
-    for(auto str : sv){
-        cout << str << endl;
-    }
     return 0;
     
 }

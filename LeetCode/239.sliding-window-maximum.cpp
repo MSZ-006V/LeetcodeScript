@@ -19,6 +19,7 @@ public:
             mlist.push_back(i); // 弹出后，压入对应元素，操作类似单调栈
             // output 
             if(i - mlist.front() >= k){ 
+            // 不能使用mlist.size()进行判断，因为不是真实的窗口大小，只有i - mlist.front() 才是真实的窗口大小
             // 因为记录的都是下标，如果队列中元素大于k了，就把最左边的弹出来
             // 表示已经不在窗口里了，没用了所以要弹出
                 mlist.pop_front();
