@@ -21,6 +21,7 @@ public:
     // 根据是否会有一连串的1的情况，做一个if，如果有就加上ones，没有就计算前半部分就行
     // 思想比较巧妙，原理很简单，代码实现需要小心谨慎防止下标错误
     long cal(int val, int length){
+        // 先使用1进行填充，剩下的多的，逐渐递增直到达到val的值
         if (length + 1 < val) {
             int small = val - length;
             return (long) (val - 1 + small) * length / 2;
@@ -31,15 +32,12 @@ public:
     }
 
     int maxValue(int n, int index, int maxSum) {
+        // 使用二分查找加检查区间是否合法的方法
         int left = 1, right = maxSum;
         int ans = 0;
 
         while(left <= right){
             int mid = left + (right - left) / 2;
-            if(mid > maxSum){
-                right = mid + 1;
-                continue;
-            }
             if(check(n, index, maxSum, mid)){
                 left = mid + 1;
                 ans = mid;

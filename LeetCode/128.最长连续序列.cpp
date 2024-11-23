@@ -8,6 +8,27 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
+        // 下面这个写法实际运行时间更短，但是时间复杂度是O(nlogn)
+        // if(nums.size() == 0)
+        //     return 0;
+        // sort(nums.begin(), nums.end());
+        // int seq_len = 1;
+        // int ans = 1;
+        // for(int i = 1; i < nums.size(); ++i){
+        //     if(nums[i] == nums[i - 1]) continue; // 遇到相同的就跳过，比如0,1,1,2，会跳过第二个1
+        //     if(nums[i] - nums[i - 1] == 1){
+        //         seq_len++;
+        //     }
+        //     else{
+        //         ans = max(ans, seq_len);  // 遇到不连续的了，记录最大的，然后重新算开头
+        //         seq_len = 1;
+                
+        //     }
+        // }
+        // ans = max(ans, seq_len);
+        // return ans;
+
+        // 在lc上下面这个解法耗时更多，但是时间复杂度满足题意，是O(n)
         if(nums.size() == 0)
             return 0;
 

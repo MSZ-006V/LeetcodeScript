@@ -21,6 +21,9 @@ public:
         }
     }
     int numDistinctIslands(vector<vector<int>>& grid) {
+        // 这道题用一个字符串编码来解决，因为每一次遍历肯定都是从岛的左上角顶点开始遍历
+        // 使用每一个点与左上角顶点的距离进行编码，每一个岛的编码都是独一无二的
+        // 然后插入一个unordered_set进行记录，保证可以统计到所有不同类型的岛
         unordered_set<string> island_pattern;
         for(int i = 0; i < grid.size(); ++i){
             for(int j = 0; j < grid[0].size(); ++j){

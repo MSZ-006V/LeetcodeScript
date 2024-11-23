@@ -15,7 +15,7 @@ class Solution(object):
         dp = [1] * len(nums)
 
         # 当遍历到i个元素的时候，对0~i-1的元素进行遍历，比较出最大的长度
-        # 然后+1，即j从0~i-1, 求max(dp[j] +1)
+        # 然后+1，即j从051
         for i in range(1, len(nums)):
             for j in range(i):
                 if nums[i] > nums[j]:

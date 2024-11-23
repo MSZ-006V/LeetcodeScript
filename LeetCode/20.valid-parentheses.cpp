@@ -8,6 +8,7 @@
 class Solution {
 public:
     bool isValid(string s) {
+        // 简单题，使用一个栈就可以完成
         stack<char> st;
         for(char c : s){
             if(c == '(' || c == '[' || c == '{'){
