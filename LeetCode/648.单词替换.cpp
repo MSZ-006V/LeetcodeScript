@@ -37,7 +37,7 @@ public:
             index++;
         }
         // cout << word.substr(0, index) << endl;
-        return index;
+        return index; // 循环结束，说明不能继续往下找了，也就是找到了word的最长前缀的下标了
     }
 
 };
@@ -45,38 +45,34 @@ class Solution {
 public:
     string replaceWords(vector<string>& dictionary, string sentence) {
         Trie trie;
-        for(string word : dictionary){
+        for(string word : dictionary){ // 首先把字典dictionary中所有词放入trie树种
             trie.insert(word);
         }
 
-        std::vector<std::string> words;
+        std::vector<std::string> words; // 分割字符串
         size_t pos = 0, found;
         while ((found = sentence.find(' ', pos)) != std::string::npos) {
             words.push_back(sentence.substr(pos, found - pos));
             pos = found + 1;
         }
         
-        words.push_back(sentence.substr(pos));
+        words.push_back(sentence.substr(pos)); // words数组中存放所有字符
 
         vector<string> result_words;
         for(auto word : words){
-            int index = trie.search(word);
-            if(index != 0){
+            int index = trie.search(word); // 用完整版的单词进行查找
+            if(index != 0){ // 返回不为0，说明trie前缀树中有一部分这个词的前缀，就取子串，然后放入结果就行
                 result_words.push_back(word.substr(0, index));
             }
-            else{
+            else{// 如果返回是0，说明完全没有，这个词无法被替换，也就是在trie树中没有这个词的前缀
                 result_words.push_back(word);
             }
         }
-        string result_str = "";
-        for(int i = 0; i < result_words.size(); ++i){
-            if(i < result_words.size() - 1){
-                result_str = result_str + result_words[i] + " ";
-            }
-            else{
-                result_str = result_str + result_words[i];
-            }
-        }
+
+        string result_str = ""; // 再把字符串全部连起来
+        result_str = accumulate(result_words.begin() + 1, result_words.end(), result_words[0], [](auto a, auto b){
+            return a + " " + b;
+        });
 
         return result_str;
     }

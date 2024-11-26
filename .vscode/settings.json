@@ -21,6 +21,7 @@
         "variant": "cpp",
         "cstdlib": "cpp",
         "random": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "numeric": "cpp"
     }
 }
