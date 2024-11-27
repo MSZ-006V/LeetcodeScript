@@ -12,11 +12,11 @@ public:
         dp[0] = 0;
 
         for(int i = 0; i < coins.size(); ++i){ // 相当于对于每一种面额的零钱，分别的计算
-            for(int j = coins[i]; j < amount + 1; ++j){
+            for(int j = coins[i]; j < amount + 1; ++j){ // 是顺序进行遍历的
                 dp[j] = min(dp[j], dp[j - coins[i]] + 1);
             }
         }
-        if(dp[amount] == amount + 1){
+        if(dp[amount] == amount + 1){ // 表示没有找到正确的答案，初始化的答案没有被修改
             return -1;
         }
         return dp[amount];

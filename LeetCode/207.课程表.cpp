@@ -18,7 +18,7 @@ public:
         while(!que.empty()){
             int cur = que.front();que.pop();
             result.push_back(cur);
-            vector<int> nodes = edges[cur];
+            vector<int>& nodes = edges[cur];
             
             for(int i = 0; i < nodes.size(); ++i){
                 input_rank[nodes[i]]--;
