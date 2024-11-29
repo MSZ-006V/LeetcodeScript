@@ -17,13 +17,13 @@ public:
             }
         }
         // routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]]
-        // 遍历完后如下，比如7号车站经过0号车，15号车站经过1号和3号车
+        // 遍历完后的stop_to_buses数组中，7号车站是只有0号车经过，而15号车站经过1号车和3号车
         // 并且由于BFS的特性，访问到就是最短
 
         queue<int> que;
         unordered_map<int, int> dis;
-        dis[source] = 0;
-        que.push(source);
+        dis[source] = 0; 
+        que.push(source); // 把起始车站放到队列中
 
         while(!que.empty()){
             int x = que.front(); que.pop();

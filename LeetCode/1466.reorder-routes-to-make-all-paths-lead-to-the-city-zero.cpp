@@ -20,10 +20,13 @@ public:
     int minReorder(int n, vector<vector<int>>& connections) {
         vector<vector<pair<int, int>>> edges(n);
         for(auto edge : connections){
+            // 把原来正向的权值记为1，反向的权值记为0，这样子方便在dfs中直接统计距离
             edges[edge[0]].push_back(make_pair(edge[1], 1));
             edges[edge[1]].push_back(make_pair(edge[0], 0));
         }
         // 初始parent定义为-1就行
+        // 从节点0开始访问，可以访问到的全部都是反向的，而这些边的权值都是1，把这些边的权值
+        // 全部加起来，就知道要把多少条边反向了
         return dfs(edges, 0, -1);
     }
 };

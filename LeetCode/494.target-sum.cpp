@@ -24,6 +24,10 @@ public:
             // 因为如果顺序遍历会覆盖上次计算过的数据，导致出错，所以要使用逆序遍历
                 dp[j] += dp[j - nums[i]];
             }
+            // for(auto n : dp){ 可以看看打印出来的数组，会更容易理解
+            //     cout << n << ' ';
+            // }
+            // cout << endl;
         }
 
         return dp[target_v];

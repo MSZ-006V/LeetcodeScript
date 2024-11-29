@@ -26,6 +26,7 @@ class Solution(object):
                     dp[i][j] = dp[i - 1][j - 1] + 1
                 else:
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+                    
                 if dp[i][j] > result:
                     result = dp[i][j]
 

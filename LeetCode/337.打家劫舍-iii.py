@@ -18,14 +18,13 @@ class Solution(object):
         if root is None:
             return [0, 0]
         
-        # 1值为不偷的，2值为偷的
         # 函数返回值[val1, val2]中，val1代表不偷当前节点得到的最大金额，val2代表偷当前节点2得到的最大金额
         left1, left2 = self.traversal(root.left)
         right1, right2 = self.traversal(root.right)
 
-        # 偷当前节点, left和right节点不能偷
+        # 偷当前节点, left和right节点不能偷，所以必须选择left和right中的val1（不偷）
         val1 = root.val + left1 + right1
-        # 不偷当前节点，选最大的
+        # 不偷当前节点，选最大的，任意节点都可以选择，选最大的就行
         val2 = max(left1, left2) + max(right1, right2)
 
         return [val2, val1]

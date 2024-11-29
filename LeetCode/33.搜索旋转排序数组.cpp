@@ -12,14 +12,15 @@ public:
     // 通过这个性质，判断left - mid - 1是有序数组，还是mid + 1 - right是有序数组
     // 判断完哪边是有序数组后，再在有序数组中继续搜索
     int binary_search(vector<int>& nums, int target){
-        int left = 0;
-        int right = nums.size() - 1;
-        int mid = 0;
+        int n = nums.size();
+        int left = 0, right = n - 1;
         while(left <= right){
-            mid = left + (right - left) / 2;
+            int mid = left + (right - left) / 2;
             if(nums[mid] == target) return mid;
+            // 下面target和nums[mid]之间都是不等于号，因为上面if已经比较过了，没必要重复写
+            // 但是nums[0], nums[n - 1]还是要写小于等于或者大于等于的
             if(nums[0] <= nums[mid]){
-                if(nums[0] <= target && target < nums[mid]){
+                if(nums[0] <= target && target < nums[mid]){ 
                     right = mid - 1;
                 }
                 else{
@@ -27,7 +28,7 @@ public:
                 }
             }
             else{
-                if(nums[nums.size() - 1] >= target && target > nums[mid]){
+                if(nums[mid] < target && target <= nums[n - 1]){
                     left = mid + 1;
                 }
                 else{
@@ -35,9 +36,9 @@ public:
                 }
             }
         }
+
         return -1;
     }
-
     int search(vector<int>& nums, int target) {
         if(nums.size() == 0) return -1;
         if(nums.size() == 1) return nums[0] == target?0:-1;
