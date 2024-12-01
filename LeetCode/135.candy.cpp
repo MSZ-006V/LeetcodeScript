@@ -8,6 +8,7 @@
 class Solution {
 public:
     int candy(vector<int>& ratings) {
+        // time complexity is O(n), space complexity is O(n);
         vector<int> candies(ratings.size(), 1);
         for(int i = 1; i < candies.size(); ++i){
             if(ratings[i] > ratings[i - 1]){

@@ -27,6 +27,7 @@ public:
         // return result;
 
         // 直接使用动态规划就可以了
+        // time complexity is O(n), space complexity is O(n)
         vector<int> dp(nums.size(), 0);
         dp[0] = nums[0];
         int maxsum = nums[0];
@@ -37,6 +38,22 @@ public:
         }
 
         return maxsum;
+
+        // time complexity is O(n), space complexity is O(1)
+        int res = INT_MIN;
+        int sum = 0;
+
+        for(int i = 0; i < nums.size(); ++i){
+            sum += nums[i];
+            if(sum < nums[i]){
+                sum = nums[i];
+            }
+            if(sum > res){
+                res = sum;
+            }
+        }
+
+        return res;
     }
 };
 // @lc code=end

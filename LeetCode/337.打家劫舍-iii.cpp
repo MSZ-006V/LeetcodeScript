@@ -18,6 +18,8 @@
  */
 class Solution {
 public:
+    // 树形dp问题-打家劫舍，对于每一个节点，有两种状态
+    // 偷或者是不偷，即下面的val1和val2，全部返回，最后到根节点再进行结算即可
     vector<int> traversal(TreeNode* root){
         if(root == nullptr){
             return {0, 0};

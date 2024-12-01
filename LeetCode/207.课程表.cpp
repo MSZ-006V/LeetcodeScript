@@ -40,7 +40,7 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         // 最经典的拓扑排序，对于一个有向图，是否可以把这个图转换为一个线性的序列进行输出
         // 这就是拓扑排序的用处
-        vector<int> input_rank(numCourses, 0);
+        vector<int> input_rank(numCourses, 0); // 入度
         unordered_map<int, vector<int>> edges;
         for(int i = 0; i < prerequisites.size(); ++i){
             input_rank[prerequisites[i][1]]++;
