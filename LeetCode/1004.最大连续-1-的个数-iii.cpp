@@ -8,6 +8,8 @@
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
+        // 2024.12.1记：重新复习这道题，其实就是灵神的滑动窗口公式模版
+        // 维护窗口内的0的个数，永远保证窗口内0的个数是小于等于k的，这样子可以保证窗口内的数字可以全是1（经过翻转后）
         // 统计窗口内 0 的个数 cnt0，则问题转换成在 cnt0 ≤ k 的前提下，窗口大小的最大值。
         int ans = 0, left = 0, cnt0 = 0;
         for(int right = 0; right < nums.size(); ++right){
