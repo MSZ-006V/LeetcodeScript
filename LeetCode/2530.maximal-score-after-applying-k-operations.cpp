@@ -14,7 +14,8 @@ public:
         for(int i = 0; i < k; ++i){
             int num = pq.top(); pq.pop();
             score += num;
-            pq.push((num + 2) / 3);
+            // cpp中向上取整的方法
+            pq.push((num - 1) / 3 + 1);
         }
 
         return score;

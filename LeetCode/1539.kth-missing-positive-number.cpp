@@ -8,6 +8,7 @@
 class Solution {
 public:
     int findKthPositive(vector<int>& arr, int k) {
+        // time complexity is O(n)
         unordered_set<int> numset(arr.begin(), arr.end());
         int index = 0;
         while(k > 0){

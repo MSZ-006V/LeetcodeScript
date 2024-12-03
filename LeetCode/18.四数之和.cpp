@@ -8,6 +8,7 @@
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        // time complexity is O(n^3)
         // 使用两个循环 i 和 k 来固定2个数，然后使用left和right来移动
         vector<vector<int>> result;
         sort(nums.begin(), nums.end());

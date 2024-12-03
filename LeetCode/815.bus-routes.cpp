@@ -9,10 +9,11 @@ class Solution {
 public:
 
     int numBusesToDestination(vector<vector<int>>& routes, int source, int target) {
+        // time complexity is O(n * m), n是公交车个数，m是所有车站个数
         unordered_map<int, vector<int>> stop_to_buses;
         for(int i = 0; i < routes.size(); ++i){
             for(int x : routes[i]){
-                stop_to_buses[x].push_back(i); // 记录的是每一个车站，结果的公交车编号
+                stop_to_buses[x].push_back(i); // 记录的是每一个车站，经过的公交车编号
                 // 这部分很精髓，保存每个车站经过的车辆编号，也是实际中的做法
             }
         }

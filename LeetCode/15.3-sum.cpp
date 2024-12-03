@@ -8,6 +8,7 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
+        // time complexity is O(n^2)
         vector<vector<int>> result;
         sort(nums.begin(), nums.end());
         int n = nums.size();

@@ -9,6 +9,7 @@ class Solution {
 public:
     vector<int> canSeePersonsCount(vector<int>& heights) {
         // 典型单调栈题目，栈底到栈尾是单调递减的
+        // monotonic stack
         int n = heights.size();
         stack<int> st;
         vector<int> result(n, 0);
