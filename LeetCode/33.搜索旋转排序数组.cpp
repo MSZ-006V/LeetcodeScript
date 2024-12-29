@@ -9,7 +9,7 @@ class Solution {
 public:
     // 由于是旋转排序数组，那么这个数组一定可以分为前后两个部分
     // 前面一部分的所有数都大于后一部分的数，也有nums[0] > nums[n - 1]
-    // 通过这个性质，判断left - mid - 1是有序数组，还是mid + 1 - right是有序数组
+    // 通过这个性质，判断left ~ mid - 1是有序数组，还是mid + 1 ~ right是有序数组
     // 判断完哪边是有序数组后，再在有序数组中继续搜索
     int binary_search(vector<int>& nums, int target){
         int n = nums.size();

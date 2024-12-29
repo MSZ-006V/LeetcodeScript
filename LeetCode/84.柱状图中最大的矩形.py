@@ -13,10 +13,16 @@ class Solution(object):
         """
         result = 0
         stack = []
+
+        # 前后插入两个0元素很重要，因为防止原本heights数组就是一个单调递增的[1, 3, 7]
+        # 像上面这个情况，插入后变成[0, 1, 3, 7, 0]，最后遍历到最后一个0，肯定会计算一次
+        # 所以一定会有结果，如果没有这两个0，就没法计算了
+        
         heights.insert(0, 0)
         heights.append(0)
         stack.append(0)
-        # 对比42接雨水，这道题的单调栈是栈底到栈尾是从小到大的
+
+        # 对比42接雨水，这道题的单调栈是栈底到栈顶是从小到大的
         for i in range(1, len(heights)):
             if heights[i] >= heights[stack[-1]]:
                 stack.append(i)
