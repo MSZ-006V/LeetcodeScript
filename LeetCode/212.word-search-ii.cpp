@@ -12,6 +12,7 @@ struct Trienode{
 };
 
 void InsertTrie(Trienode* root, string word){
+    // Trienode* node = this; 也可以使用this指针
     Trienode* node = root;
     for(auto c : word){
         if(node->next[c - 'a'] == nullptr){
