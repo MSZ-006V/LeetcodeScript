@@ -1,13 +1,6 @@
-/*
- * @lc app=leetcode.cn id=684 lang=cpp
- *
- * [684] 冗余连接
- */
-
-// @lc code=start
 class Solution {
 public:
-    int n = 1001;
+    int n = 101;
     vector<int> union_set;
     
     void init(){
@@ -37,6 +30,8 @@ public:
     }
 
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        // 只是最简单的冗余连接类型，用并查集就可以解决
+        // 详情见leetcode684,685
         init();
         for(int i = 0; i < edges.size(); ++i){
             vector<int> edge = edges[i];
@@ -50,5 +45,3 @@ public:
         return {};
     }
 };
-// @lc code=end
-

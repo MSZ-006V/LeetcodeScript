@@ -12,6 +12,8 @@
         "unordered_map": "cpp",
         "ostream": "cpp",
         "limits": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "unordered_set": "cpp",
+        "span": "cpp"
     }
 }
