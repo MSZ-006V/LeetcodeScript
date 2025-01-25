@@ -67,7 +67,8 @@ public:
         // 最后返回是有说法的，返回要返回nas_root的值，表示不以当前节点为中转点，所以如果是小于零的，那直接扔掉
         // 这个结果就好了，对上面求最大值肯定是没用的，否则返回一个正的值
         if(nas_root < 0) return 0; 
-        return nas_root;
+        return nas_root; // 必须是返回nas_root，表示不以当前root节点为连接左右子树的节点。因为如果连接了左右子树，这个值返回到上层就没用了，已经在当前root拐弯了
+        // 所以一定只能返回max(left, right) + root->val这个值
     }
     int maxPathSum(TreeNode* root) {
         if(root == nullptr) return 0;
