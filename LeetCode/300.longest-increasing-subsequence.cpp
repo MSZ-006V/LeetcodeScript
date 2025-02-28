@@ -8,6 +8,7 @@
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
+        // tc O(nlogn), sc O(n)
         // vector<int> res;
         // for(auto num : nums){
         //     // 直接在结果数组中查找
@@ -20,6 +21,8 @@ public:
         //     }
         // }
         // return res.size();
+
+        // tc O(n^2), sc O(n)
         int n = nums.size();
         vector<int> dp(n, 1);
 
