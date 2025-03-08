@@ -17,7 +17,6 @@
 class Solution {
 public:
     TreeNode* find(TreeNode* root, TreeNode* p, TreeNode* q){
-        // 向下一直找，直到找到节点p或者q或者一个空节点
         if(root == p || root == q || root == nullptr){
             return root;
         }
@@ -25,10 +24,6 @@ public:
         TreeNode* left = find(root->left, p, q);
         TreeNode* right = find(root->right, p, q);
         
-        // 如果返回的left和right都不是空节点，就返回当前root节点
-        // 如果有一个不为空另一个为空，返回不为空那个
-        // 如果2个都为空，就返回nullptr
-        // 这样能找到公共父节点，包括所有的2种情况都考虑到了
         if(left != nullptr && right != nullptr){
             return root;
         }

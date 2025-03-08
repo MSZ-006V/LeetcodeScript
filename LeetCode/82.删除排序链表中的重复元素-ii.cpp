@@ -20,7 +20,7 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         ListNode dummy(0, head);
         // 要删除有重复数字的，比如1,2,3,4,4,4,5,5
-        // 4和5都乐山，最后只剩下1,2,3
+        // 4和5都删了，最后只剩下1,2,3
         // 所以当cur指向3，要探索cur->next 和 cur->next->next
         // 如果这两个相同，就直接改变cur->next
         auto cur = &dummy;

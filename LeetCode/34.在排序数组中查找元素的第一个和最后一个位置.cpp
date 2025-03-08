@@ -26,6 +26,7 @@ public:
         // 如果是left变动是 <= target, 对于上面这种数组的查找结果就是left=4,right=3,返回的left
         // 就不是区间的开头了
     }
+    
     vector<int> searchRange(vector<int>& nums, int target) {
         int start = lower_bound(nums, target); // 此时返回的结果就是区间的开头
         if(start == nums.size() || nums[start] != target) return {-1, -1};

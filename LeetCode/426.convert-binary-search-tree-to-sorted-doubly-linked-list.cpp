@@ -42,8 +42,8 @@ public:
 
     Node* treeToDoublyList(Node* root) {
         // time complexity is O(n)
-        这题直接用数的节点当做双向链表的节点，一个prev一个next
-        使用的是中序遍历的迭代版
+        // 这题直接用树的节点当做双向链表的节点，一个prev一个next
+        // 使用的是中序遍历的迭代版
         if(root == nullptr) return root;
 
         pushNode(root);
