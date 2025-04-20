@@ -8,7 +8,7 @@
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
-        // 原方法的改进版本,睡觉复杂度O(n^2),空间复杂度O(n)
+        // 原方法的改进版本,时间复杂度O(n^2),空间复杂度O(n)
         int total_sum = accumulate(nums.begin(), nums.end(), 0);
         if((abs(target) > total_sum) || ((target + total_sum) % 2 == 1)){
             return 0;
