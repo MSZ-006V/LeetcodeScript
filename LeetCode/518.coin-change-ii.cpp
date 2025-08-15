@@ -8,7 +8,7 @@
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
-        vector<unsigned> dp(amount + 1, 0);
+        vector<unsigned> dp(amount + 1, 0); // unsigned range : 0 ~ 2^32, 32bit number
         dp[0] = 1;
 
         for(auto coin : coins){

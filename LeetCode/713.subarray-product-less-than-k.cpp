@@ -16,7 +16,7 @@ public:
         int left = 0;
         for(int right = 0; right < nums.size(); ++right){
             prod = prod * nums[right];
-            while(prod >= k){ // 如果不满足条件了，就收缩左边区间直到满足条件，所以while循环结束的时候一定是满足条件的区间
+            while(left <= right && prod >= k){ // 如果不满足条件了，就收缩左边区间直到满足条件，所以while循环结束的时候一定是满足条件的区间
                 prod = prod / nums[left];
                 left++;
             }

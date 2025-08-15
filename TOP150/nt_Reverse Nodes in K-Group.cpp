@@ -1,10 +1,3 @@
-/*
- * @lc app=leetcode id=25 lang=cpp
- *
- * [25] Reverse Nodes in k-Group
- */
-
-// @lc code=start
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -15,22 +8,27 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
-    ListNode* getNode(ListNode* cur, int k){
+    ListNode* getKthNode(ListNode* cur, int k){
         while(cur && k > 0){
             cur = cur->next;
             k--;
         }
-
         return cur;
     }
+
     ListNode* reverseKGroup(ListNode* head, int k) {
+        // tc O(n), sc O(1)
+        // 实际比较复杂，操作的指针数目比较多，基本原理比较好理解
+        // 就是使用一堆变量存储某些位置，最后再进行更新，保证循环的正确
+        // 比较重要的变量有groupNext, groupPrev
         ListNode* dh = new ListNode(0, head);
         ListNode* groupPrev = dh;
 
         while(true){
-            ListNode* kth = getNode(groupPrev, k);
+            ListNode* kth = getKthNode(groupPrev, k);
             if(kth == nullptr) break;
 
             ListNode* groupNext = kth->next;
@@ -52,39 +50,3 @@ public:
         return dh->next;
     }
 };
-
-// 不够k个也翻转
-ListNode* reverseAllKGroup(ListNode* head, int k) {
-    ListNode* dummy = new ListNode(0, head);
-    ListNode* groupPrev = dummy;
-
-    while (true) {
-        // 不用提前判断 kth 是不是空
-        ListNode* cur = groupPrev->next;
-        ListNode* tail = cur;
-        int count = 0;
-        while (tail && count < k) {
-            tail = tail->next;
-            count++;
-        }
-
-        // 实际数量可能 < k
-        if (count == 0) break;
-
-        ListNode* prev = tail;
-        while (count--) {
-            ListNode* temp = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = temp;
-        }
-
-        ListNode* temp = groupPrev->next;
-        groupPrev->next = prev;
-        groupPrev = temp;
-    }
-
-    return dummy->next;
-}
-// @lc code=end
-

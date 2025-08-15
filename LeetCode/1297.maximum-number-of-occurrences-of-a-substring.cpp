@@ -32,7 +32,7 @@ public:
         int ctypes = 0;
         for(int right = 0; right < n; ++right){
             letters[s[right]]++;
-            if(letters[s[right]] == 1) ctypes++;
+            if(letters[s[right]] == 1) ctypes++; // 如果第一次出现，就把种类+1
             while(ctypes > maxLetters || right - left + 1 > minSize){
                 letters[s[left]]--;
                 if(letters[s[left]] == 0) ctypes--;
