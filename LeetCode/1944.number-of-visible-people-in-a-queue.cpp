@@ -14,7 +14,7 @@ public:
         stack<int> st;
         vector<int> result(n, 0);
 
-        for(int i = 0; i < n; ++i){
+        for(int i = 0; i < n; ++i){ // 从前往后遍历，单调递减栈
             // 栈中存储下标
             while(!st.empty() && heights[st.top()] < heights[i]){ // 如果有小的，就直接弹出多余的元素
                 result[st.top()]++;

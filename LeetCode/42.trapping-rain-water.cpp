@@ -18,7 +18,7 @@ public:
             else{
                 while(st.size() != 0 && height[i] > height[st.top()]){
                     int mid = st.top();st.pop();
-
+                    // st.top()是左边，i是右边，mid是底
                     if(st.size() != 0){
                         int h = min(height[st.top()], height[i]) - height[mid];
                         int w = i - st.top() - 1;
