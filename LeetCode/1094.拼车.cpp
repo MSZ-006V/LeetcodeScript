@@ -36,3 +36,22 @@ public:
 };
 // @lc code=end
 
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+        vector<int> cars(1001, 0);
+        for(auto t : trips){
+            int p = t[0];
+            cars[t[1]] += p;
+            cars[t[2]] -= p;
+        }
+
+        int cur_p = 0;
+        for(int i = 0; i < 1001; ++i){
+            cur_p += cars[i];
+            if(cur_p > capacity) return false;
+        }
+
+        return true;
+    }
+};

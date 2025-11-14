@@ -19,6 +19,9 @@ public:
         for(auto num : nums){
             sum += num;
             int mod_result = (sum % k + k) % k;
+            // 在cpp里面，负数取模例子如下
+            // -5 % 3 = -2, -5 % -3 = -2
+            // a % b 的符号等于a的符号
             // 由于这个数组中包含负数，所以需要对负数取模的情况特殊处理，就如上面那个式子
             // 主要操作其实还是完成sum % k, 写的那么复杂只是为了得到正确的数
             ret += ht[mod_result];

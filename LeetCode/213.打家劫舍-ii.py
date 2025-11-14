@@ -19,7 +19,7 @@ class Solution(object):
 
         value1 = self.robfunc(nums[:n - 1])
         value2 = self.robfunc(nums[1:])
-        # 考虑没有头房屋和尾房屋的情况，进行对比，返回最大的就可以了
+        # 考虑没有头房屋和没有尾房屋的情况，进行对比，返回最大的就可以了
 
         # print(value1, value2)
         return max(value1, value2)

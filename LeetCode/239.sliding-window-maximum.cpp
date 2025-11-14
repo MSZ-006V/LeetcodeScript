@@ -25,7 +25,7 @@ public:
                 mlist.pop_front();
             }
             // record ans
-            if(i >= k - 1){
+            if(i >= k - 1){ // 当窗口大小达到 k 时，才开始记录结果
                 ans.push_back(nums[mlist.front()]); // 记录队头的元素
                 // 因为是单调队列，所以队头的元素是最大的
             }

@@ -52,3 +52,29 @@ public:
 };
 // @lc code=end
 
+class Solution {
+public:
+    bool dfs(vector<vector<int>>& graph, vector<int>& colors, int x, int color){
+        colors[x] = color;
+        for(auto y : graph[x]){
+            if( colors[y] == color || 
+                (colors[y] == 0 && !dfs(graph, colors, y, -color)) // !dfs(graph, colors, y, -color) 代表如果没有染色成功，返回false，这里就会变成true，从而继续传递false
+            ){
+                return false;
+            }
+        }
+
+        return true;
+    }
+    bool isBipartite(vector<vector<int>>& graph) {
+        vector<int> colors(graph.size());
+        for(int i = 0; i < graph.size(); ++i){
+            if(colors[i] == 0 && !dfs(graph, colors, i, 1)){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+};
+

@@ -32,5 +32,30 @@ public:
         return answer;
     }
 };
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        // 简化版本
+        // 前 -> 后, 栈单调递减
+        stack<int> st;
+        st.push(0);
+        int res = 0;
+
+        for(int i = 0; i < height.size(); ++i){
+            while(!st.empty() && height[i] > height[st.top()]){
+                int mid = st.top(); st.pop();
+                if(!st.empty()){
+                    int h = min(height[i], height[st.top()]) - height[mid];
+                    int w = i - st.top() - 1;
+                    res += (h * w);
+                }
+            }
+            st.push(i); 
+        }
+
+        return res;
+    }
+};
 // @lc code=end
 

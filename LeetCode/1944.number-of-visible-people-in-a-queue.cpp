@@ -8,6 +8,8 @@
 class Solution {
 public:
     vector<int> canSeePersonsCount(vector<int>& heights) {
+        // 前往后遍历，栈底 到 栈顶递减
+        // 通常如果用栈长度，或者是两个下标之间长度，一般不适用这个场景
         // 典型单调栈题目，栈底到栈尾是单调递减的
         // monotonic stack
         int n = heights.size();

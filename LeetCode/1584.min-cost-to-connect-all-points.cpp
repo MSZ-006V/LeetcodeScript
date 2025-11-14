@@ -24,7 +24,8 @@ public:
     }
     int find(int u){
         if(u == father[u]) return u;
-        else return father[u] = find(father[u]);
+        else return father[u] = find(father[u]); // 注意这里的写法
+        // 是father[u] = , 而不是 ==，用来做路径压缩的
     }
     void join(int u, int v){
         u = find(u);
@@ -33,6 +34,7 @@ public:
         father[v] = u;
     }
 };
+
 class Solution {
 public:
     int kruskal(unionfind& uf, vector<edge>& edges, int edge_num, int vertex_num){
@@ -59,7 +61,7 @@ public:
         unionfind uf(n);
         vector<edge> edges; // 使用自定义edge数据结构建立数组
         for(int i = 0; i < n; ++i){
-            for(int j = i + 1; j < n; ++j){
+            for(int j = i + 1; j < n; ++j){ // j = i + 1, 不需要重复计算
                 edges.push_back({i, j, manhattan_dis(points[i], points[j])});
             }
         }
