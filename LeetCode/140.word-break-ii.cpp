@@ -17,6 +17,7 @@ public:
             result.push_back(output);
         }
         
+        // i 指的是单词的长度
         for(int i = 1; i <= s.size() - start_index; ++i){
             string sstr = s.substr(start_index, i);
             if(wordset.find(sstr) != wordset.end()){

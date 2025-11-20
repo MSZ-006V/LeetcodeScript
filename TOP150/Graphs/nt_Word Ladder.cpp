@@ -1,6 +1,7 @@
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        // 这是一个典型的BFS方法
         unordered_set<string> words(wordList.begin(), wordList.end());
         if(words.find(endWord) == words.end()) return 0;
 
@@ -19,6 +20,8 @@ public:
                 for(int i = 0; i < 26; ++i){
                     ncur[k] = 'a' + i;
                     if(ncur == endWord) return path_length + 1;
+                    // visited是为了防止重复访问，words是为了判断是否在wordList里面
+                    // 因为是BFS方法，所以第一次访问到的就是最短路径，因此需要visited记录访问过的节点
                     if(words.find(ncur) != words.end() && visited.find(ncur) == visited.end()){
                         que.push(ncur);
                         visited[ncur] = path_length + 1;

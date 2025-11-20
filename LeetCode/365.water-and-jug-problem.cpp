@@ -19,5 +19,19 @@ public:
         return target % gcd(x, y) == 0;
     }
 };
+
+// 简化版本
+class Solution {
+public:
+    bool canMeasureWater(int x, int y, int target) {
+        if(x + y < target) return false;
+
+        return target % gcd(x, y) == 0;
+    }
+};
+
+// 定理
+// 对于任意整数a，b（不全为0），存在整数x，y，使得
+// ax + by = gcd（a，b）
 // @lc code=end
 

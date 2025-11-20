@@ -24,17 +24,36 @@ public:
             ansarr[i - 1] += ansarr[i] / 10; // 前一位加上进位
             ansarr[i] %= 10; // %10保证一个位置只有一个个位数
         }
-        int index = ansarr[0] == 0?1:0; // 第一位数是否是0，如果是0需要去掉
-        string ans;
-        while(index < m + n){
-            ans.push_back(ansarr[index]);
-            index++;
+
+        string res;
+        for(int i = 0; i < m + n; ++i){
+            if(i == 0 && ansarr[i] == 0) continue;
+            res += ansarr[i] + '0';
         }
-        for(auto& c:ans){
-            c += '0'; // 转换为ascii码的表示形式
-        }
-        return ans;
+        return res;
     }
 };
 // @lc code=end
 
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        if(num1 == "0" || num2 == "0") return "0";
+        int n = num1.size(), m = num2.size();
+        vector<int> ans = vector(m + n, 0);
+        for(int i = n - 1; i >= 0; --i){
+            int x = num1[i] - '0';
+            for(int j = m - 1; j >= 0; --j){
+                int y = num2[j] - '0';
+                ans[i + j + 1] += x * y;
+            }
+        }
+
+        for(int i = m + n - 1; i > 0; --i){
+            ans[i - 1] += ans[i] / 10;
+            ans[i] %= 10;
+        }
+
+
+    }
+};

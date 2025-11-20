@@ -13,7 +13,7 @@ public:
             backtracking(n, temp_res, open + 1, close);
             temp_res.pop_back();
         }
-        if(open > close){
+        if(open > close){ // 防止出现左边第一个是 ')' 的情况
             temp_res.push_back(')');
             backtracking(n, temp_res, open, close + 1);
             temp_res.pop_back();

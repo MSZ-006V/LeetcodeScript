@@ -25,7 +25,7 @@ public:
 
         reverse(result.begin(), result.end());
 
-        return result.size() == num? result:std::vector<int>();
+        return result.size() == num? result : std::vector<int>();
     }
 
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {

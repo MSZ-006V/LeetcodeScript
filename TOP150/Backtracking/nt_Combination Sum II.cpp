@@ -15,7 +15,7 @@ public:
 
         for(int i = index; i < nums.size(); ++i){
             
-            // if(i > index && nums[i] == nums[i - 1]) continue; 加这个去重就可以
+            if(i > index && nums[i] == nums[i - 1]) continue; // 加这个去重就可以
             // 比如数组[1,2,2,5]， 已经得到一个结果数组是[1,2,5]，在遍历到第二个2的时候，这时候tmp数组是[1], 这时候就会触发这个语句，跳过第二个2，
             // 总之效果就是跳过重复的数，免得重复放入元素
             // 用这种方式去重就可以不用set，最优方法optimal

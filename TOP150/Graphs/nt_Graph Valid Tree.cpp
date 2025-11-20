@@ -28,6 +28,7 @@ public:
 
     }
     bool validTree(int n, vector<vector<int>>& edges) {
+        // 无向图判断是否有环：可以使用DFS方法
         isRing = false;
         vector<bool> visited(n, false);
         unordered_map<int, vector<int>> es;
@@ -38,10 +39,13 @@ public:
         }
 
         dfs(visited, es, 0, -1);
+        // 判断是否有环
         if(isRing) return false;
 
+        // 判断是否所有节点都被访问过
         for (bool v : visited) {
             if (!v) return false;
         }
+        return true;
     }
 };

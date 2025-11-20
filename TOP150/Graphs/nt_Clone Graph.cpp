@@ -56,8 +56,8 @@ public:
         while (!q.empty()) {
             Node* cur = q.front();
             q.pop();
-            for (Node* nei : cur->neighbors) {
-                if (oldToNew.find(nei) == oldToNew.end()) {
+            for (Node* nei : cur->neighbors) { // 遍历邻居
+                if (oldToNew.find(nei) == oldToNew.end()) { // 如果邻居没有克隆过，先克隆
                     oldToNew[nei] = new Node(nei->val);
                     q.push(nei);
                 }

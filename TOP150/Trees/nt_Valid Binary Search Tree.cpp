@@ -42,13 +42,20 @@ public:
     }
 
     bool valid(TreeNode* node, long left, long right) {
-        if (!node) {
+        if (node == nullptr) {
             return true;
         }
+        // left < node->val && right > node->val 是一颗树是BST的必要条件
+        // 取反就代表不满足条件，返回false
         if (!(left < node->val && node->val < right)) {
             return false;
         }
+        // 递归检查
         return valid(node->left, left, node->val) &&
                valid(node->right, node->val, right);
     }
+    // left和right分别代表当前节点的左边界和右边界，初始值分别是负无穷和正无穷
+    // 每次递归检查当前节点的值是否在(left, right)范围内，如果不满足条件就返回false
+    // 因为需要保证左子树的所有节点都小于当前节点，右子树的所有节点都大于当前节点
+    // 所以在递归检查左子树时更新右边界为当前节点的值，在递归检查右子树时更新左边界为当前节点的值
 };

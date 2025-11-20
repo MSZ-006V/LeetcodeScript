@@ -19,7 +19,7 @@ public:
             if(nums[mid] == target) return mid;
             // 下面target和nums[mid]之间都是不等于号，因为上面if已经比较过了，没必要重复写
             // 但是nums[0], nums[n - 1]还是要写小于等于或者大于等于的
-            if(nums[0] <= nums[mid]){
+            if(nums[0] <= nums[mid]){ // 代表nums[0] ~ nums[mid]是有序数组
                 if(nums[0] <= target && target < nums[mid]){ 
                     right = mid - 1;
                 }
@@ -27,7 +27,7 @@ public:
                     left = mid + 1;
                 }
             }
-            else{
+            else{ // 代表nums[mid] ~ nums[n - 1]是有序数组
                 if(nums[mid] < target && target <= nums[n - 1]){
                     left = mid + 1;
                 }

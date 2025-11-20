@@ -25,6 +25,7 @@ public:
 
         return cur;
     }
+    // 一共有 kth, groupPrev, groupNext, pre, cur 五个不同的指针
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* dh = new ListNode(0, head);
         ListNode* groupPrev = dh;
@@ -54,37 +55,45 @@ public:
 };
 
 // 不够k个也翻转
-ListNode* reverseAllKGroup(ListNode* head, int k) {
-    ListNode* dummy = new ListNode(0, head);
-    ListNode* groupPrev = dummy;
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* dh = new ListNode(0, head);
+        ListNode* groupPrev = dh;
 
-    while (true) {
-        // 不用提前判断 kth 是不是空
-        ListNode* cur = groupPrev->next;
-        ListNode* tail = cur;
-        int count = 0;
-        while (tail && count < k) {
-            tail = tail->next;
-            count++;
+        while (true) {
+            // 找到本组的起点 cur 和 tail（可能不足 k 个）
+            ListNode* cur = groupPrev->next;
+            ListNode* tail = cur;
+            int count = 0;
+
+            while (tail && count < k) {
+                tail = tail->next;
+                count++;
+            }
+
+            // 没有更多节点，结束
+            if (count == 0) break;
+
+            // 这里 tail 就是下一组的开头
+            ListNode* pre = tail;
+
+            // 反转本组（实际反转 count 个，不一定 == k）
+            while (count--) {
+                ListNode* temp = cur->next;
+                cur->next = pre;
+                pre = cur;
+                cur = temp;
+            }
+
+            // 本组新的头是 pre，本组新的尾是 groupPrev->next
+            ListNode* temp = groupPrev->next;
+            groupPrev->next = pre;
+            groupPrev = temp;
         }
 
-        // 实际数量可能 < k
-        if (count == 0) break;
-
-        ListNode* prev = tail;
-        while (count--) {
-            ListNode* temp = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = temp;
-        }
-
-        ListNode* temp = groupPrev->next;
-        groupPrev->next = prev;
-        groupPrev = temp;
+        return dh->next;
     }
-
-    return dummy->next;
-}
+};
 // @lc code=end
 

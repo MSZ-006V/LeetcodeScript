@@ -1,44 +1,38 @@
 class Solution {
 public:
-    int n;
-    int m;
-    int dir[4][2] = {0, 1, 0, -1, 1, 0, -1, 0};
     void solve(vector<vector<char>>& board) {
-        n = board.size();
-        m = board[0].size();
-        vector<vector<bool>> turns(n, vector<bool>(m, true)); // 需要转的就是ture
-        vector<vector<bool>> visited(n, vector<bool>(m, false)); 
+        int n = board.size();
+        int m = board[0].size();
 
-        for(int i = 0; i < n; ++i){
-            if(board[i][0] == 'O') dfs(i, 0, board, visited, turns);
-            if(board[i][m - 1] == 'O') dfs(i, m - 1, board, visited, turns);
+        vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+
+        function<void(int,int)> dfs = [&](int r, int c){
+            if (r < 0 || c < 0 || r >= n || c >= m) return;
+
+            if (board[r][c] != 'O') return;
+
+            board[r][c] = '#';  // 标记为不被包围
+            
+            for (auto &d : dirs)
+                dfs(r + d[0], c + d[1]);
+        };
+
+        // 1. 从四条边界的 O 逆向 DFS，把所有“不被包围”的标记出来
+        for (int i = 0; i < n; i++) {
+            dfs(i, 0);
+            dfs(i, m - 1);
+        }
+        for (int j = 0; j < m; j++) {
+            dfs(0, j);
+            dfs(n - 1, j);
         }
 
-        for(int j = 0; j < m; ++j){
-            if(board[0][j] == 'O') dfs(0, j, board, visited, turns);
-            if(board[n - 1][j] == 'O') dfs(n - 1, j, board, visited, turns);
-        }
-
-
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < m; ++j){
-                if(turns[i][j] && board[i][j] == 'O'){
-                    board[i][j] = 'X';
-                }
-            }
-        }
-    }
-
-    void dfs(int x, int y, vector<vector<char>>& board, vector<vector<bool>>& visited, vector<vector<bool>>& turns){
-        turns[x][y] = false;
-        visited[x][y] = true;
-        for(int i = 0; i < 4; ++i){
-            int nx = x + dir[i][0];
-            int ny = y + dir[i][1];
-
-            if(nx >= 0 && nx < n && ny >= 0 && ny < m && 
-            !visited[nx][ny] && board[nx][ny] == 'O'){
-                dfs(nx, ny, board, visited, turns);
+        // 2. 把剩下的 O（没标记成 # 的）变成 X
+        //    把 # 还原成 O
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (board[i][j] == 'O') board[i][j] = 'X';
+                if (board[i][j] == '#') board[i][j] = 'O';
             }
         }
     }

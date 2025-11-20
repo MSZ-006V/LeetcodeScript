@@ -1,4 +1,4 @@
-// leetcode 236 Lowest common ancestor 最近公共祖先
+// leetcode 236 Lowest common ancestor 最近公共祖先(普通树)
 
 class Solution {
 public:
@@ -14,7 +14,7 @@ public:
         else if(min(p->val, q->val) > root->val){
             return LCA(root->right, p, q);
         } 
-        else{
+        else{ // 说明p和q分别在root的两侧，或者其中一个就是root，所以root就是最近公共祖先
             return root;
         }
     }
