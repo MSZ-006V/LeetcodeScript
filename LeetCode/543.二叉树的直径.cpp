@@ -26,7 +26,7 @@ public:
 
         int left = traversal(root->left);
         int right = traversal(root->right);
-        ans = max(ans, left + right + 1);
+        ans = max(ans, left + right);
         return max(left, right) + 1;
 
     }
@@ -34,10 +34,9 @@ public:
         if(root == nullptr){
             return 0;
         }
-        ans = 1;
+        ans = 0;
         traversal(root);
-        return ans - 1;
-
+        return ans;
     }
 };
 // @lc code=end

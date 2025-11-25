@@ -42,7 +42,7 @@ public:
             else if(isdigit(c)){
                 int num = 0;
                 while(i < n && isdigit(s[i])){
-                    num= num * 10 + (s[i] - '0');
+                    num = num * 10 + (s[i] - '0');
                     ++i;
                 }
                 nums.push(num);

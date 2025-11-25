@@ -27,7 +27,7 @@ public:
             int left = i + 1;
             int right = nums.size() - 1;
             while(left < right){
-                // 如果大了，就减小rig，让和变小
+                // 如果大了，就减小right，让和变小
                 // 如果小了，就增大left，让和变大
                 if(nums[i] + nums[left] + nums[right] > 0) right--;
                 else if(nums[i] + nums[left] + nums[right] < 0) left++;

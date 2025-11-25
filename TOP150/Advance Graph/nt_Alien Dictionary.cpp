@@ -24,7 +24,9 @@ public:
                 idx++;
             }
 
+            // 如果idx == len，说明w1是w2的前缀，如果w1比w2长，则invalid
             if(idx == len && w1.size() > w2.size()) return "";
+            // 记录边
             if(idx < len){
                 int u = w1[idx] - 'a';
                 int v = w2[idx] - 'a';

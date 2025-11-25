@@ -11,6 +11,18 @@
 
 class Solution {
 public:
+    // ListNode* reverse(ListNode* head){
+    //     ListNode* pre = nullptr;
+    //     ListNode* cur = head;
+    //     while(cur){
+    //         ListNode* temp = cur->next;
+    //         cur->next = pre;
+    //         pre = cur;
+    //         cur = temp;
+    //     }
+
+    //     return pre;
+    // }
     ListNode* reverseList(ListNode* head) {
         // tc O(n), sc O(1)
         ListNode* cur = head;
@@ -24,5 +36,5 @@ public:
         }
         
         return pre;
-    }Merge Two Sorted Linked Lists
+    }
 };
