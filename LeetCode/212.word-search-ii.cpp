@@ -28,9 +28,9 @@ class Solution {
     int n;
     int m;
 public:
-    bool dfs(vector<vector<char>>& board, int x, int y, Trienode* root, set<string>& res){
+    void dfs(vector<vector<char>>& board, int x, int y, Trienode* root, set<string>& res){
         char ch = board[x][y];
-        if(root->next[ch - 'a'] == nullptr) return false;
+        if(root->next[ch - 'a'] == nullptr) return;
 
         root = root->next[ch - 'a'];
         if(root->word.size() > 0){
@@ -49,8 +49,6 @@ public:
             }
         }
         board[x][y] = ch; // 回溯，恢复原来的，以便于以后还可以继续查找
-
-        return true;
     }
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         n = board.size();

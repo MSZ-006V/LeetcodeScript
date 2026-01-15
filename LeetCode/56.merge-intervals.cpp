@@ -30,3 +30,17 @@ public:
 };
 // @lc code=end
 
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(), intervals.end(), [](auto a, auto b){
+            return a[0] < b[0];
+        });
+
+        vector<vector<int>> res;
+
+        for(auto i : intervals){
+            
+        }
+    }
+};

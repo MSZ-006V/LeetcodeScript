@@ -15,7 +15,7 @@ public:
         string temp_num = ""; // 暂时存储数字
         stack<char> st; // 储存[, ]还有字母
         stack<int> nums; // 储存重复次数
-        for(char c:s){
+        for(char c : s){
             if(c == ']'){
                 string temp_s = ""; // 存储要重复的字符串
                 

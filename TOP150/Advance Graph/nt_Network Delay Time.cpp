@@ -67,7 +67,7 @@ public:
             
             // 在通常的堆实现里我们没有直接支持「减小键值（decrease-key）」操作，所以当我们发现更短的到达某个节点的路径时，会再次把这个节点和新的更小距离入堆，而旧的（更大的）距离条目仍然留在堆里 —— 这就会产生 stale（过期）条目。
             // if (d > dist[u]) continue; 的作用就是跳过这些过期条目，避免重复/无意义的松弛操作，从而保证效率（并防止在错误的实现中影响正确性）。
-            if(d > dist[u]) continue;
+            if(d > dist[u]) continue; // dijkstra算法模版写法
 
             for(auto &[v, weight] : graph[u]){
                 if(dist[u] + weight < dist[v]){

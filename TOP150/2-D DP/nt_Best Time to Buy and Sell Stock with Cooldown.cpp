@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        // leetcode 309 with 冷却期
+        // leetcode 309 with 冷却期，冷却期为1天
         // tc O(n), sc O(n)
         int n = prices.size();
         if(n == 1) return 0;

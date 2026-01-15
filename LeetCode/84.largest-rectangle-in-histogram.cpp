@@ -15,22 +15,17 @@ public:
         st.push(0);
 
         for(int i = 1; i < heights.size(); ++i){
-            if(heights[i] >= heights[st.top()]){
-                st.push(i);
-            }
-            else{
-                while(!st.empty() && heights[i] < heights[st.top()]){
-                    int mid = st.top(); st.pop();
-                    if(!st.empty()){
-                        int right = i;
-                        int left = st.top();
-                        int width = right - left - 1;
-                        int high = heights[mid];
-                        result = max(result, width * high);
-                    }
+            while(!st.empty() && heights[i] < heights[st.top()]){
+                int mid = st.top(); st.pop();
+                if(!st.empty()){
+                    int right = i;
+                    int left = st.top();
+                    int width = right - left - 1;
+                    int high = heights[mid];
+                    result = max(result, width * high);
                 }
-                st.push(i);
             }
+            st.push(i);
         }
 
         return result;

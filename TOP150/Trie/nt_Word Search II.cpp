@@ -14,6 +14,9 @@ void insert(trie* root, string word){
     }
     node->word = word;
 }
+
+// leetcode 212 word search II
+// leetcode 79 word search I
 class Solution {
 private:
     int m;
@@ -61,10 +64,7 @@ public:
             }
         }
 
-        vector<string> result;
-        for(auto word : res){
-            result.push_back(word);
-        }
+        vector<string> result(res.begin(), res.end());
         return result;
     }
 };
