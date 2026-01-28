@@ -29,3 +29,20 @@
 - ROUND
     - 定义：ROUND(number, decimals), 前一个是数值，后面是保留的小数位数（支持对结果四舍五入）
 - 聚合函数不能嵌套！！！如MAX(COUNT(*))
+- 条件(CASE WHEN THEN END): 对column_or_expression进行匹配，如果有等于WHEN后的值，就返回THEN的结果。否则返回ELSE（相当于DEFAULT），如果没有ELSE则返回NULL
+    - 也可以写 WHEN value IN ('c1', 'c2') THEN
+```
+CASE column_or_expression
+    WHEN value1 THEN result1
+    WHEN value2 THEN result2
+    ...
+    ELSE default_result  -- 可选
+END
+```
+- GROUP_CONCAT(expression [ORDER BY ...] [SEPARATOR 'sep']): 把分组后的多行数据拼接成字符串，默认分隔符为 ',' , 用法GROUP_CONCAT(name ORDER BY name)
+
+4. Update语句
+- 题目：627
+
+5. 好题
+- 1141：包括GROUP BY，HAVING，WHERE，COUNT(DISTINCT *)等条件，复杂
