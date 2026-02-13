@@ -40,6 +40,59 @@ int quicksort(vector<int>& nums, int l, int r, int k){
     else return quicksort(nums, j + 1, r, k);
 }
 
+ListNode* reverse(ListNode* head){
+    ListNode* prev = nullptr;
+    ListNode* cur = head;
+    while(cur != nullptr){
+        ListNode* temp = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = temp;
+    }
+}
+
+struct ListNode{
+    int val;
+    ListNode* next;
+    ListNode(int x): val(x), next(nullptr){}
+};
+
+ListNode* buildlist(vector<int>& nums){
+    ListNode* head = new ListNode(0);
+    ListNode* cur = head;
+
+    for(int x : nums){
+        cur->next = new ListNode(x);
+        cur = cur->next;
+    }
+    return head->next;
+}
+
+struct TreeNode{
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x): val(x), left(nullptr), right(nullptr){}
+};
+
+TreeNode* buildtree(vector<int>& nums){
+    vector<TreeNode*> nodes(nums.size(), nullptr);
+    for(int i = 0; i < nums.size(); ++i){
+        if(nums[i] != -1){
+            nodes[i] = new TreeNode(nums[i]);
+        }
+    }
+    for(int i = 0; i < nums.size(); ++i){
+        if(nodes[i] != nullptr){
+            int l = 2 * i + 1, r = 2 * i + 2;
+            if(l < nums.size()) nodes[i]->left = nodes[l];
+            if(r < nums.size()) nodes[i]->right = nodes[r];
+        }
+    }
+
+    return nodes[0];
+}
+
 
 int main(){
     // vector<int> a = {2,4,3,3,2,4,5,7,8,8,9,5,3,1};
