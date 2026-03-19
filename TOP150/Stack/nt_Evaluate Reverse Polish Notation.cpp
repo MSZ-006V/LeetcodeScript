@@ -4,6 +4,8 @@ public:
         // tc O(n), sc O(n)
         // 使用逆波兰表达式，解析时从左到右扫描表达式，遇到操作数就入栈，
         // 遇到操作符就弹出两个操作数进行计算，结果再入栈
+        // 计算器 leetcode 150 逆波兰表达式求值
+        // 直接看leetcode 224，770计算器系列
         stack<string> st;
 
         for(string& c : tokens){

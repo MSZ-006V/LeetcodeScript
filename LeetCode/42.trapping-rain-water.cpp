@@ -37,7 +37,7 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         // 简化版本
-        // 前 -> 后, 栈单调递减
+        // 前 -> 后, 栈底 到 栈顶 递减
         stack<int> st;
         st.push(0);
         int res = 0;

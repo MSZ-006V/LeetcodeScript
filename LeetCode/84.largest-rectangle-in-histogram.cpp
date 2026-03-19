@@ -38,6 +38,7 @@ public:
     int largestRectangleArea(vector<int>& heights) {
         // 和42接雨水实际上是一样的
         // 前 -> 后, 栈底 到 栈顶 递增
+        // 因为找的是更矮的边界，找到了就可以计算面积
         stack<int> st;
         st.push(0);
         heights.push_back(0);

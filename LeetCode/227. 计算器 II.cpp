@@ -1,12 +1,16 @@
 // 这道题是标准模板，适用于224 计算器 I 和 772 计算器 III
+// Hard leetcode 770 计算器4
 class Solution {
 public:
     int precedence(char op){
+        // 负责返回运算符的优先级，优先级越高的运算符应该先计算
         if(op == '+' || op == '-') return 1;
         if(op == '*' || op == '/') return 2;
         return 0; // (, )
     }
     void apply(stack<int>& nums, stack<char>& ops){
+        // 负责从nums弹出两个数，从ops弹出运算符
+        // 计算后结果压入nums
         if(nums.size() < 2 || ops.empty()) return;
 
         int b = nums.top(); nums.pop();
@@ -25,6 +29,7 @@ public:
         stack<int> nums;
         stack<char> ops;
 
+        // 从左到右遍历
         for(int i = 0; i < s.size();){
             char c = s[i];
             if(c == ' ') {++i; continue;}
@@ -59,7 +64,9 @@ public:
                 }
                 // 这里判断符号是 >= , 因为如果是 +, -, 他们优先级相同
                 // 如果是 * /, 他们优先级相同
-                // 只有当当前符号优先级小于等于栈顶符号时，才需要计算
+                // 只有当前符号优先级小于等于栈顶符号时，才需要计算
+                // 因为如果当前符号优先级大于栈顶符号，说明当前符号应该先计算，不需要先计算栈顶符号
+                // 那么这时候应该向后遍历，直到找到一个优先级小于当前符号的符号，或者遇到 '('
                 while(!ops.empty() && precedence(ops.top()) >= precedence(c)){
                     apply(nums, ops);
                 }
