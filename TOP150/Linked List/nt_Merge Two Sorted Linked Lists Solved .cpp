@@ -13,7 +13,6 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         // tc O(min(n, m)), sc O(1)
-        if(list1 == nullptr && list2 == nullptr) return nullptr;
         if(list1 == nullptr) return list2;
         if(list2 == nullptr) return list1;
 

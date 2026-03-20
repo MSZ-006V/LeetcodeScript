@@ -11,7 +11,7 @@ public:
             ht[s[right]]++;
             maxf = max(maxf, ht[s[right]]);
 
-            while(right - left + 1 - maxf > k){ // 如果需要替换的字符数量大于k了，说明invalid，就缩短右边边界
+            while(right - left + 1 - maxf > k){ // 如果需要替换的字符数量大于k了，说明invalid，就缩短左边边界
                 ht[s[left]]--;
                 left++;
             }

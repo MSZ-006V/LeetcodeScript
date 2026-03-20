@@ -7,12 +7,12 @@ public:
         list<int> mlist;
         vector<int> result;
         for(int i = 0; i < nums.size(); ++i){
-            while(!mlist.empty() && nums[mlist.back()] <= nums[i]){
+            while(!mlist.empty() && nums[mlist.back()] <= nums[i]){ // 维护一个从头到尾descending的单调队列
                 mlist.pop_back();
             }
             mlist.push_back(i);
 
-            if(i - mlist.front() >= k){
+            if(i - mlist.front() >= k){ // 清理过期元素（不在窗口里面的元素）
                 mlist.pop_front();
             }
             if(i >= k - 1){

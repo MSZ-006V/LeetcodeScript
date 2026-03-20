@@ -4,6 +4,7 @@ public:
         // leetcode 435 无重叠区间
         // 按照区间的结束位置进行排序，然后贪心选择不重叠的区间
         // 我们希望每次选择“结束时间最早”的区间，因为它 留给后面区间的空间最多，从而能让后面保留更多不重叠的区间
+        // tc O(nlogn), sc O(1)
         sort(intervals.begin(), intervals.end(), [](const auto& a, const auto& b){
             return a[1] < b[1];
         });
