@@ -8,6 +8,7 @@ class MedianFinder {
         }
         
         void addNum(int num) {
+            // 假设数据流是ascending的，所以左半边left使用max_heap, right使用min_heap
             // 整体插入的逻辑就是，把一个数组分成两个部分，左边部分从小到大，最靠近中间的数是左边部分最大的，所以左边用最大优先队列
             // 右边部分从小到大，最靠近中间的数是右边部分最小的，右边用最小优先队列
 
