@@ -12,7 +12,7 @@ public:
             } else {
                 leftMin--; leftMax++;
             }
-            if (leftMax < 0) return false; // 即便把所有的 '*' 都当 '(' 用，也抵消不了那么多右括号
+            if (leftMax < 0) return false; // 即便把所有的 '*' 都当 '(' 用，也抵消不了那么多 )
             if (leftMin < 0) leftMin = 0; // 代表可以用 '*' 来当做 ( 来抵消 )
         }
         return leftMin == 0; // 剩余 '(' 并且无法用 '*' 来抵消

@@ -38,7 +38,8 @@ public:
         }
 
         return maxsum;
-
+        
+        // 空间优化版本
         // time complexity is O(n), space complexity is O(1)
         int res = INT_MIN;
         int sum = 0;

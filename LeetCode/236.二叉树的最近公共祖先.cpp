@@ -45,3 +45,21 @@ public:
 };
 // @lc code=end
 
+// 精简判断
+class Solution {
+public:
+    TreeNode* find(TreeNode* root, TreeNode* p, TreeNode* q){
+        if(root == p || root == q || root == nullptr){
+            return root;
+        }
+
+        TreeNode* left = find(root->left, p, q);
+        TreeNode* right = find(root->right, p, q);
+        
+        if(left && right) return root;
+        return left? left : right;
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        return find(root, p, q);
+    }
+};

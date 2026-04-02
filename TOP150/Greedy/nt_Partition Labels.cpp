@@ -44,6 +44,10 @@ public:
 class Solution {
 public:
     vector<int> partitionLabels(string s) {
+        // 通过记录每个字符最后一次出现的位置，然后进行顺序遍历
+        // 如果当前分区里面所有字符的最后一次出现位置都在当前分区内
+        // 那么就可以将当前分区加入结果中，并且重置状态，继续寻找下一个分区
+        // tc O(n), sc O(n)
         unordered_map<char, int> lastIndex;
         for (int i = 0; i < s.size(); i++) {
             lastIndex[s[i]] = i;

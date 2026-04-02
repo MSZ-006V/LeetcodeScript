@@ -10,6 +10,7 @@ public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         // 可以使用拓扑排序，从外向内剥离节点，作为根节点的最小高度树的节点，入度一定是很大的
         // 当剥离到最后一层的时候，剩下的节点就是最小高度树的根节点集合了
+        // 数学定理：任何一棵无向无环树，它的“最小高度树根”最多只有 2 个
         if(n == 1) return {0};
         vector<int> node_degree(n, 0);
         vector<vector<int>> es(n);
@@ -35,7 +36,7 @@ public:
                 int cur = que.front(); que.pop();
                 ans.push_back(cur);
                 for(auto& b : es[cur]){
-                    if(--node_degree[b] == 1){
+                    if(--node_degree[b] == 1){ // 剥离了后，如果入度是1，说明变成叶子节点，加入队列
                         que.push(b);
                     }
                 }

@@ -22,6 +22,8 @@ public:
         }
     }
     bool exist(vector<vector<char>>& board, string word) {
+        // tc O(n * m * 3^k), sc O(k)，其中 k 是单词的长度
+        // 3^k 是因为不能走回头路，所以实际上只有3个方向可以选择
         n = board.size();
         m = board[0].size();
         isFind = false;

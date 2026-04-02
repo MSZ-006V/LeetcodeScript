@@ -33,6 +33,7 @@ class Solution {
     vector<vector<int>> res;
 public:
     vector<vector<int>> permute(vector<int>& nums) {
+        // tc O(n! * n), sc O(n! * n)
         backtrack(nums, 0);
         return res;
     }

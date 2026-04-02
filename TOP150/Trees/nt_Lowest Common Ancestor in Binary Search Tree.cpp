@@ -19,3 +19,28 @@ public:
         }
     }
 };
+
+// LCA in common tree
+class Solution {
+public:
+    TreeNode* find(TreeNode* root, TreeNode* p, TreeNode* q){
+        if(root == nullptr || root == p || root == q) return root;
+
+        TreeNode* left = find(root->left, p, q);
+        TreeNode* right = find(root->right, p, q);
+
+        if(left == nullptr && right == nullptr){
+            return nullptr;
+        }
+        else if(left == nullptr && right != nullptr){
+            return right;
+        }
+        else if(left != nullptr && right == nullptr){
+            return left;
+        }
+        return root;
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        return find(root, p, q);
+    }
+};

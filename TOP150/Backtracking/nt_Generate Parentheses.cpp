@@ -21,6 +21,7 @@ public:
     }
 
     vector<string> generateParenthesis(int n) {
+        // tc O(4^n / sqrt(n)), sc O(n)
         int open = 0;
         int close = 0;
         string temp_res = "";
