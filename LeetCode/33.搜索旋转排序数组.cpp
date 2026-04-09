@@ -22,7 +22,7 @@ public:
             if(nums[0] <= nums[mid]){ // 代表nums[0] ~ nums[mid]是有序数组
                 if(nums[0] <= target && target < nums[mid]){ 
                     right = mid - 1;
-                }
+                }   
                 else{
                     left = mid + 1;
                 }

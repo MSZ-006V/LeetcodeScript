@@ -35,7 +35,7 @@ public:
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        // tc O(nlogk) , sc O(k)
+        // tc O(nlogk) , sc O(k)，最小堆
         priority_queue<int, vector<int>, greater<int>> pq;
         
         for(int x : nums){
