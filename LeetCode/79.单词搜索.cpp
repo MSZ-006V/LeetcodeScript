@@ -53,3 +53,45 @@ public:
 };
 // @lc code=end
 
+class Solution {
+public:
+    int dir[4][2] = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+    int n, m;
+
+    bool dfs(vector<vector<char>>& board, string& word, int index, int x, int y) {
+        // 终止条件：路径长度等于单词长度，说明找全了
+        if (index == word.size()) return true;
+
+        // 保存当前字符并标记为已访问（通过修改原数组省去 visited 空间）
+        char temp = board[x][y];
+        board[x][y] = '#'; 
+
+        for (auto& d : dir) {
+            int nx = x + d[0];
+            int ny = y + d[1];
+
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m && board[nx][ny] == word[index]) {
+                if (dfs(board, word, index + 1, nx, ny)) return true;
+            }
+        }
+
+        // --- 关键一步：回溯 ---
+        board[x][y] = temp; 
+        return false;
+    }
+
+    bool exist(vector<vector<char>>& board, string word) {
+        n = board.size();
+        m = board[0].size();
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                // 起点匹配
+                if (board[i][j] == word[0]) {
+                    if (dfs(board, word, 1, i, j)) return true;
+                }
+            }
+        }
+        return false;
+    }
+};

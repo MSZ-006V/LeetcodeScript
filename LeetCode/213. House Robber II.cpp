@@ -1,4 +1,4 @@
-class Solution {
+    class Solution {
 public:
     int rob_f(vector<int> nums){ // 这里不能用引用，因为需要对数组进行切片
         if(nums.size() == 1) return nums[0];

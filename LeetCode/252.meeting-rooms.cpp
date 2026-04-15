@@ -35,3 +35,22 @@ public:
 };
 // @lc code=end
 
+class Solution {
+public:
+    bool canAttendMeetings(vector<vector<int>>& intervals) {
+        // tc: O(nlogn)
+        map<int, int> ht;
+        for (auto i : intervals) {
+            ht[i[0]]++;
+            ht[i[1]]--;
+        }
+        int concur_rooms = 0;
+        for (auto m : ht) {
+            concur_rooms += m.second;
+            if (concur_rooms > 1) return false;
+        }
+
+        return true;
+    }
+};
+

@@ -5,6 +5,7 @@ public:
     set<pair<int,int>> visited;
 
     void goBack(Robot &robot) {
+        // 回溯，首先转向两次，头朝向背后，然后移动一步，随后再次转向180度，使得还是回到原来的方向
         robot.turnRight();
         robot.turnRight();
         robot.move();
