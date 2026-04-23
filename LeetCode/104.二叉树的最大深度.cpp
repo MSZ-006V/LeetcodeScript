@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // 自底向上，后序遍历
     int dfs(TreeNode* root){
         if(root == nullptr) return 0;
 
@@ -22,5 +23,24 @@ public:
     int maxDepth(TreeNode* root) {
         if(root == nullptr) return 0;
         return dfs(root);
+    }
+};
+
+class Solution {
+public:
+    // 自顶向下，先序遍历
+    int maxDepth(TreeNode* root) {
+        int ans = 0;
+        auto dfs = [&](this auto&& dfs, TreeNode* node, int depth) -> void {
+            if (node == nullptr) {
+                return;
+            }
+            depth++;
+            ans = max(ans, depth);
+            dfs(node->left, depth);
+            dfs(node->right, depth);
+        };
+        dfs(root, 0);
+        return ans;
     }
 };

@@ -31,3 +31,9 @@ public:
         return dh->next;
     }
 };
+
+// [1,2,3,4,5], left = 2, right = 4
+// 此时left就是节点1，right就是节点5，因此翻转2,3,4
+// 得到的结果是1,4,3,2,5
+// 所以使用1作为pre节点，翻转right-left次
+// pre可以当成是一个dh的节点，使用头插法，插入pre和pre->next的节点就可以了！

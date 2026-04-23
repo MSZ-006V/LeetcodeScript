@@ -1,6 +1,7 @@
 class Solution {
 public:
     // leetcode787
+    // 下面这个方法会memory exceed的
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
         unordered_map<int, vector<pair<int, int>>> ht;
         for(auto f : flights){
@@ -37,5 +38,38 @@ public:
         }
 
         return min_cost == INT_MAX? -1 : min_cost;
+    }
+};
+
+// 使用下面这个方法就好，使用的是dijkstra思想
+class Solution {
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+        unordered_map<int, vector<pair<int, int>>> ht;
+        for (auto f : flights) {
+            ht[f[0]].push_back({f[1], f[2]});
+        }
+
+        queue<pair<int, int>> que;
+        vector<int> distances(n, INT_MAX);
+
+        que.push({src, 0});
+        distances[src] = 0;
+        
+        while(!que.empty() && k >= 0) {
+            k--;
+            int size = que.size();
+            for (int i = 0; i < size; ++i) {
+                auto [cur, cost] = que.front(); que.pop();
+                for (auto [next, next_cost] : ht[cur]) {
+                    if (cost + next_cost < distances[next]) {
+                        distances[next] = cost + next_cost;
+                        que.push({next, cost + next_cost});
+                    }
+                }
+            }
+        }
+
+        return distances[dst] == INT_MAX? -1 : distances[dst];
     }
 };

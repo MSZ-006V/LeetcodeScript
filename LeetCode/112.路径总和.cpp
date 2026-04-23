@@ -48,3 +48,23 @@ public:
 };
 // @lc code=end
 
+// 自顶向下
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        auto dfs = [&](this auto&& dfs, TreeNode* node, int depth) -> void {
+            if (node == nullptr) {
+                return;
+            }
+            if (depth == ans.size()) { // 这个深度首次遇到
+                ans.push_back(node->val);
+            }
+            dfs(node->right, depth + 1); // 先递归右子树，保证首次遇到的一定是最右边的节点
+            dfs(node->left, depth + 1);
+        };
+        dfs(root, 0);
+        return ans;
+    }
+};
+
