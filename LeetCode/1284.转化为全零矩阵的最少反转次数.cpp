@@ -23,6 +23,7 @@ private:
     static constexpr int dirs[5][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {0, 0}};
 
 public:
+    // 把矩阵编码成一个整数。每个格子对应一个二进制位，0或1。
     int encode(const vector<vector<int>>& mat, int m, int n) {
         int x = 0;
         for (int i = 0; i < m; ++i) {
@@ -82,7 +83,7 @@ public:
                             visited.insert(x_cur);
                             q.push(x_cur);
                         }
-                        convert(status, m, n, i, j);
+                        convert(status, m, n, i, j); // 恢复现场，回溯
                     }
                 }
             }
